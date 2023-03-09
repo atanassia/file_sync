@@ -11,6 +11,7 @@ type jsondata struct {
 	Data []string `json:"data"`
 }
 
+// uploadChages() загружает изменения в файл
 func (app *config) uploadChages(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
@@ -46,6 +47,7 @@ func (app *config) uploadChages(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Данные загружены.")
 }
 
+// getUnsentLineCount получает новые строки от клиента (когда клиент только-только запустился) 
 func (app *config) getUnsentLineCount(w http.ResponseWriter, r *http.Request) {
 	f, err := os.OpenFile(app.fileLocate, os.O_RDONLY, 0644)
 
